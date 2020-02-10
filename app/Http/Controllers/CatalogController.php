@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Movie;
 use App\Review;
@@ -14,7 +14,9 @@ class CatalogController extends Controller
 
         $Pelicula = Movie::findOrFail($id);
 
-        return view('catalog.show', array('Pelicula'=>$Pelicula));
+        $Reviews = Review::where('movie_id', $id)->get();
+
+        return view('catalog.show', array('Pelicula'=>$Pelicula, 'Reviews'=>$Reviews));
 
     }
 
@@ -129,6 +131,24 @@ class CatalogController extends Controller
 
     }
 
-    
+    public function postReview(Request $request, $id){
+
+        $user = Auth::id();
+        $Pelicula = Movie::findOrFail($id);
+        $r = new Review;
+        $r->title = $request->title;
+        $r->review = $request->review;
+        $r->stars = $request->stars;
+        $r->user_id = $user;
+        $r->movie_id = $Pelicula->id;
+        $r->save();
+
+        $Reviews = Review::where('movie_id', $Pelicula->id)->get();
+
+        Notify::success('Gracias por darnos tu opinión!');
+
+        return view('catalog.show', array('Pelicula'=>$Pelicula, 'Reviews'=>$Reviews));
+
+    }
 
 }

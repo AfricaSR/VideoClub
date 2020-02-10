@@ -41,6 +41,7 @@ Route::put('/catalog/return/{id}', 'CatalogController@putReturn')->middleware('a
 
 Route::delete('/catalog/delete/{id}', 'CatalogController@deleteMovie')->middleware('auth');
 
+Route::post('/review/create/{id}', 'CatalogController@postReview')->middleware('auth');
 
 Auth::routes();
 
