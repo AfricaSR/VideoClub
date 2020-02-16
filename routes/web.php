@@ -23,9 +23,19 @@ Route::get('/logout', function () { // Logout usuario
     return view('logout');
 });
 */
+Route::post('/catalog', 'CatalogController@search')->middleware('auth');
+
 Route::get('/catalog', 'CatalogController@getIndex')->middleware('auth');
 
 Route::get('/catalog/show/{id}', 'CatalogController@getShow')->middleware('auth');
+
+Route::get('/favourites', 'FavouriteController@index')->middleware('auth');
+
+Route::post('/catalog/show/{id}', 'FavouriteController@getFavourite')->middleware('auth');
+
+Route::delete('/catalog/show/{id}', 'FavouriteController@deleteFavourite')->middleware('auth');
+
+Route::get('/catalog/ranking', 'FavouriteController@ranking')->middleware('auth');
 
 Route::get('/catalog/create', 'CatalogController@getCreate')->middleware('auth');
 
@@ -42,6 +52,22 @@ Route::put('/catalog/return/{id}', 'CatalogController@putReturn')->middleware('a
 Route::delete('/catalog/delete/{id}', 'CatalogController@deleteMovie')->middleware('auth');
 
 Route::post('/review/create/{id}', 'CatalogController@postReview')->middleware('auth');
+
+//Route::resource('category','CategoryController');
+
+Route::get('/category', 'CategoryController@index')->middleware('auth');
+
+Route::get('/category/create', 'CategoryController@create')->middleware('auth');
+
+Route::post('/category/create', 'CategoryController@store')->middleware('auth');
+
+Route::get('/category/{category}', 'CategoryController@show')->middleware('auth');
+
+Route::get('/category/{category}/edit', 'CategoryController@edit')->middleware('auth');
+
+Route::put('/category/{category}', 'CategoryController@update')->middleware('auth');
+
+Route::delete('/category/{category}', 'CategoryController@destroy')->middleware('auth');
 
 Auth::routes();
 

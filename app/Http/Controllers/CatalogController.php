@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use Cohensive\Embed\Facades\Embed;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Movie;
 use App\Review;
+use App\Category;
+use App\Favourite;
 use Notify;
 
 class CatalogController extends Controller
@@ -16,7 +19,15 @@ class CatalogController extends Controller
 
         $Reviews = Review::where('movie_id', $id)->get();
 
-        return view('catalog.show', array('Pelicula'=>$Pelicula, 'Reviews'=>$Reviews));
+        $Fav = false;
+
+        if ((Favourite::where('movie_id', $id)->where('user_id', Auth::id()))->first()){
+
+            $Fav = true;
+
+        }
+
+        return view('catalog.show', array('Pelicula'=>$Pelicula, 'Reviews'=>$Reviews, 'Fav'=>$Fav));
 
     }
 
@@ -24,7 +35,9 @@ class CatalogController extends Controller
 
         $Pelicula = Movie::findOrFail($id);
 
-        return view('catalog.edit', array('id' => $id, 'Pelicula'=>$Pelicula));
+        $Category = Category::all();
+
+        return view('catalog.edit', array('id' => $id, 'Pelicula'=>$Pelicula, 'Category'=>$Category));
         
     }
 
@@ -38,7 +51,9 @@ class CatalogController extends Controller
 
     public function getCreate(){
 
-        return view('catalog.create');
+        $c = Category::all();
+
+        return view('catalog.create', array('Category'=>$c));
 
     }
 
@@ -48,11 +63,20 @@ class CatalogController extends Controller
         $p->title = $request->title;
         $p->year = $request->anio;
         $p->director = $request->aut;
+        $p->category_id = $request->Category;
+
         if ($request->has('img')) {
 
             $p->poster = $request->img;
             
         }
+
+        if ($request->has('trailer')) {
+
+            $p->trailer = $request->trailer;
+            
+        }
+
         $p->rented = false;
         $p->synopsis = $request->synopsis;
         $p->save();
@@ -77,7 +101,11 @@ class CatalogController extends Controller
 
         }
 
-        
+        if ($request->has('trailer')) {
+
+            $p->trailer = $request->trailer;
+            
+        }
         $p->rented = false;
         $p->synopsis = $request->synopsis;
         $p->save();
@@ -86,7 +114,17 @@ class CatalogController extends Controller
 
         $Pelicula = Movie::findOrFail($id);
 
-        return view('catalog.show', array('Pelicula'=>$Pelicula));
+        $Reviews = Review::where('movie_id', $id)->get();
+
+        $Fav = false;
+
+        if ((Favourite::where('movie_id', $id)->where('user_id', Auth::id()))->first()){
+
+            $Fav = true;
+
+        }
+
+        return view('catalog.show', array('Pelicula'=>$Pelicula, 'Reviews'=>$Reviews, 'Fav'=>$Fav));
         
     }
 
@@ -147,7 +185,25 @@ class CatalogController extends Controller
 
         Notify::success('Gracias por darnos tu opinión!');
 
-        return view('catalog.show', array('Pelicula'=>$Pelicula, 'Reviews'=>$Reviews));
+        $Fav = false;
+
+        if ((Favourite::where('movie_id', $id)->where('user_id', Auth::id()))->first()){
+
+            $Fav = true;
+
+        }
+
+        return view('catalog.show', array('Pelicula'=>$Pelicula, 'Reviews'=>$Reviews, 'Fav'=>$Fav));
+
+    }
+
+    function search(Request $request){
+
+        $q = $request->qry;
+
+        $Peliculas = Movie::where('title', 'LIKE','%'.$q.'%')->orWhere('director','LIKE','%'.$q.'%')->get();
+
+        return view('catalog.index', array('arrayPeliculas'=>$Peliculas));
 
     }
 

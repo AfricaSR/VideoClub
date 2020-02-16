@@ -41,4 +41,10 @@ class User extends Authenticatable
     {
       return $this->hasMany('Review');
     }
+
+    public function favourites()
+    {
+      return $this->hasMany('Favourite');
+    }
+
 }

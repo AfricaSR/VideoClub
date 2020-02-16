@@ -30,10 +30,25 @@
                <input type="text" name="aut" id="aut" class="form-control">
             </div>
 
+            <div class="form-group mb-3 mt-3">
+               <label for="Category">Para Adultos</label>
+               <select class="custom-select" id="Category" name="Category">
+                  @foreach( $Category as $c )
+                     <option value="{{$c->id}}">{{$c->title}}</option>
+                  @endforeach
+               </select>
+            </div>
+            
+
             <div class="form-group">
             <label for="title">Poster</label>
                <input type="text" name="img" id="img" class="form-control">
             </div>
+
+            <div class="form-group">
+               <label for="title">Trailer</label>
+                  <input type="text" name="trailer" id="trailer" class="form-control">
+               </div>
 
             <div class="form-group">
                <label for="synopsis">Resumen</label>

@@ -29,11 +29,29 @@
             <label for="title">Ator/a</label>
                <input type="text" name="aut" id="aut" class="form-control" value="{{$Pelicula->director}}">
             </div>
+            
+            <div class="form-group mb-3 mt-3">
+               <label for="category">Categoría</label>
+               <select class="custom-select" id="category" name="category">
+                  @foreach( $Category as $c )
+                     @if ($c->id == $Pelicula->category_id)
+                        <option selected value="{{$c->id}}">{{$c->title}}</option>
+                     @else
+                        <option value="{{$c->id}}">{{$c->title}}</option>
+                     @endif
+                  @endforeach
+               </select>
+            </div>
 
             <div class="form-group">
             <label for="title">Poster</label>
                <input type="text" name="img" id="img" class="form-control" value="{{$Pelicula->poster}}">
             </div>
+
+            <div class="form-group">
+               <label for="title">Trailer</label>
+                  <input type="text" name="trailer" id="trailer" class="form-control">
+               </div>
 
             <div class="form-group">
                <label for="synopsis">Resumen</label>

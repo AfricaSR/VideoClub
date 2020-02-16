@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Movie;
+use App\Category;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -43,4 +44,6 @@ class HomeController extends Controller
 
 
     }
+
+
 }

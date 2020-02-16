@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReviewsTable extends Migration
+class AddFavouritesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('favourites', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->text('review');
-            $table->integer('stars');
-            $table->timestamps();
             $table->bigInteger('user_id')->unsigned(); 
             $table->bigInteger('movie_id')->unsigned();
+            $table->timestamps();
         });
 
-        Schema::table('reviews', function($table) {
+        Schema::table('favourites', function($table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
         });
@@ -36,6 +33,6 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('favourites');
     }
 }

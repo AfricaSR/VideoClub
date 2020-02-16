@@ -5,7 +5,9 @@
 
     <div class="col-md-3"> 
 
-            <img src="{{$Pelicula->poster}}"/>
+            <img src="{{$Pelicula->poster}}" style="width: 100%; margin-bottom: 10%"/>
+
+            <iframe width="100%" src="https://www.youtube.com/embed/  {{$Pelicula->trailer}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     </div>
 
@@ -16,6 +18,8 @@
         <h3>Año: {{$Pelicula->year}}</h3>
 
         <h3>Director: {{$Pelicula->director}}</h3>
+
+        <h3>Categoría: {{$Pelicula->category->title}}</h3>
 
         <br>
 
@@ -34,11 +38,28 @@
         <br>
 
         <div>
-            <form action="" 
-                style="display:inline">
-                <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-heart"></span> Favoritos</button>
-            </form>
+
             
+
+            @if($Fav == false)
+
+            <form action="{{action('FavouriteController@getFavourite', $Pelicula->id)}}" 
+                method="POST" style="display:inline">
+                {{ method_field('POST') }}
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-heart"></span> Favoritos</button>
+            </form>
+
+            @else
+            <form action="{{action('FavouriteController@deleteFavourite', $Pelicula->id)}}" 
+                method="POST" style="display:inline">
+                {{ method_field('DELETE') }}
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-heart"></span> Favoritos</button>
+            </form>
+
+            @endif
+
             @if ($Pelicula->rented == 1)
 
             <form action="{{action('CatalogController@putReturn', $Pelicula->id)}}" 
@@ -90,7 +111,7 @@
 
         <div style="margin-top:25px;">
         <h3>Comentarios</h3>
-        @foreach( $Reviews as $Review )
+        @foreach( $Reviews ?? '' as $Review )
         <div class="card border-light">
             <div class="card-body" style="border-left: 5px solid lightgrey; padding-left: 1%">
             <h5 class="card-title">{{$Review->title}}</h5>
