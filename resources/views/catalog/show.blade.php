@@ -126,11 +126,16 @@
                 {{ csrf_field() }}
                 <div class="form-group mb-3 mt-3">
                     <label for="title">Enviar comentario</label>
-                    <input type="text" name="title" id="title" class="form-control mt-3" placeholder="Resumen del comentario">
+                    <input type="text" name="title" id="title" class="form-control mt-3 @error('title') is-invalid @enderror"  placeholder="Resumen del comentario" required>
+                    @error('title')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                  </div>
                  <h5>Valoración</h5>
                  <div class="input-group mb-3 mt-3">
-                    <select class="custom-select" id="stars" name="stars" style="width: 100%; height: 5%">
+                    <select class="custom-select" id="stars" name="stars" style="width: 100%; height: 5%" required>
                       <option selected value="1">1 Estrella</option>
                       <option value="2">2 Estrellas</option>
                       <option value="3">3 Estrellas</option>
@@ -139,7 +144,7 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <textarea name="review" id="review" class="form-control" rows="3" placeholder="Da tu opinión"></textarea>
+                    <textarea name="review" id="review" class="form-control" rows="3" placeholder="Da tu opinión" required></textarea>
                  </div>
                  <div class="form-group text-center" style="display:inline">
                     <input type="submit" class="btn btn-success" style="margin-bottom:25px;" value="Valorar"/>

@@ -17,15 +17,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('v1/catalog', 'APICatalogController@store')->middleware('auth.basic.once');
+Route::post('v1/catalog', 'APICatalogController@store')->middleware('auth.basic.once')->name('store');
 
 Route::put('v1/catalog/{id}', 'APICatalogController@update')->middleware('auth.basic.once');
 
 Route::delete('v1/catalog/{id}', 'APICatalogController@destroy')->middleware('auth.basic.once');
 
-Route::put('v1/catalog/{id}/rent', 'APICatalogController@putRent')->middleware('auth.basic.once');
+Route::put('v1/catalog/{id}/rent', 'APICatalogController@putRent')->middleware('auth.basic.once')->name('putRent');
 
-Route::put('v1/catalog/{id}/return', 'APICatalogController@putReturn')->middleware('auth.basic.once');
+Route::put('v1/catalog/{id}/return', 'APICatalogController@putReturn')->middleware('auth.basic.once')->name('putReturn');
 
 Route::get('v1/catalog', 'APICatalogController@index');
 

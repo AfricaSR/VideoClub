@@ -173,27 +173,48 @@ class CatalogController extends Controller
 
         $user = Auth::id();
         $Pelicula = Movie::findOrFail($id);
-        $r = new Review;
-        $r->title = $request->title;
-        $r->review = $request->review;
-        $r->stars = $request->stars;
-        $r->user_id = $user;
-        $r->movie_id = $Pelicula->id;
-        $r->save();
 
-        $Reviews = Review::where('movie_id', $Pelicula->id)->get();
+        if (!empty($request->title) && !empty($request->review) && !empty($request->stars)){
 
-        Notify::success('Gracias por darnos tu opinión!');
+            $r = new Review;
+            $r->title = $request->title;
+            $r->review = $request->review;
+            $r->stars = $request->stars;
+            $r->user_id = $user;
+            $r->movie_id = $Pelicula->id;
+            $r->save();
+    
+            $Reviews = Review::where('movie_id', $Pelicula->id)->get();
+    
+            Notify::success('Gracias por darnos tu opinión!');
+    
+            $Fav = false;
+    
+            if ((Favourite::where('movie_id', $id)->where('user_id', Auth::id()))->first()){
+    
+                $Fav = true;
+    
+            }
+    
+            return view('catalog.show', array('Pelicula'=>$Pelicula, 'Reviews'=>$Reviews, 'Fav'=>$Fav));
 
-        $Fav = false;
+        }else{
 
-        if ((Favourite::where('movie_id', $id)->where('user_id', Auth::id()))->first()){
-
-            $Fav = true;
-
+            $Reviews = Review::where('movie_id', $Pelicula->id)->get();
+    
+            Notify::warning('Todos los campos deben ser rellenados');
+    
+            $Fav = false;
+    
+            if ((Favourite::where('movie_id', $id)->where('user_id', Auth::id()))->first()){
+    
+                $Fav = true;
+    
+            }
+    
+            return view('catalog.show', array('Pelicula'=>$Pelicula, 'Reviews'=>$Reviews, 'Fav'=>$Fav));
         }
-
-        return view('catalog.show', array('Pelicula'=>$Pelicula, 'Reviews'=>$Reviews, 'Fav'=>$Fav));
+       
 
     }
 
