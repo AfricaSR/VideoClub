@@ -11,7 +11,7 @@ use App\Movie;
 
 class LoginControllerTest extends TestCase
 {
-
+    //El usuario puede acceder al login
     public function test_user_can_view_a_login_form()
     {
         $response = $this->get('/login');
@@ -19,7 +19,7 @@ class LoginControllerTest extends TestCase
         $response->assertSuccessful();
         $response->assertViewIs('auth.login');
     }
-
+    //El usuario no puede volver al formulario de login una vez autenticado
     public function test_user_cannot_view_a_login_form_when_authenticated()
     {
         $user = User::find(1);
@@ -30,7 +30,7 @@ class LoginControllerTest extends TestCase
 
         $response->assertRedirect('/home');
     }
-
+    //El usuario no puede enviar el formulario de login vacío
     public function test_user_cannot_send_empty_login_from()
     {
         
@@ -41,7 +41,7 @@ class LoginControllerTest extends TestCase
         $response->assertSessionHasErrors('email');
 
     }
-
+    //Cuando el usuario se autentica, va al catálogo
     public function test_user_looged_get_catalog()
     {
         $user = User::find(1);
@@ -54,7 +54,7 @@ class LoginControllerTest extends TestCase
 
         $response->assertViewIs('catalog.index');
     }
-
+    //Cuando se obtiene un index, se muestra la información de la película
     public function test_user_looged_get_1_movie()
     {
         $user = User::find(1);
@@ -67,7 +67,7 @@ class LoginControllerTest extends TestCase
 
         $response->assertViewIs('catalog.show');
     }
-
+    //No se postea una review vacía
     public function test_user_post_empty_comment()
     {
         $user = User::find(1);
@@ -77,7 +77,7 @@ class LoginControllerTest extends TestCase
         $response->assertStatus(200);
 
     }
-
+    //Se crea una review vía post y se comprueba en la base de datos
     public function test_user_post_comment()
     {
         $this->withoutExceptionHandling();
@@ -97,7 +97,7 @@ class LoginControllerTest extends TestCase
         ]);
 
     }
-
+    //El usuario puede editar una película y esta se puede ver en la base de datos
     public function test_user_edit_movie()
     {
         $this->withoutExceptionHandling();
@@ -125,7 +125,7 @@ class LoginControllerTest extends TestCase
         ]);
 
     }
-
+    //Si se trata de crear una película mediante un formulario vacío, salta una redirección
     public function empty_movie()
     {
         $response = $this->withoutMiddleware()->post(route('catalog.create'));
@@ -136,7 +136,24 @@ class LoginControllerTest extends TestCase
 
     }
 
+    //Se puede crear una película vía API
+    public function Test_API_create_Movie()
+    {
+        $this->withoutExceptionHandling();
 
+        $response = $this->withoutMiddleware()->post(route('store'), [
+            'title' => 'Lo que Laravel se llevó',
+            'year' => '2020',
+            'director' => 'Bonifacio',
+            'synopsis' => 'Si esto no sirve, me #$"!/( en mi **** vida',
+            'category' => 1,
+            'trailer' => 'trailer'
+        ]);
+
+        $response->assertStatus(200);
+    }
+
+    //Se puede poner una película en alquiler vía API
     public function test_PUT_Rent()
     {
 
@@ -144,7 +161,7 @@ class LoginControllerTest extends TestCase
 
         $response->assertStatus(200);
     }
-
+    //Se puede devolver una película vía API
     public function test_PUT_Renturn()
     {
 
@@ -153,20 +170,5 @@ class LoginControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function Test_API_create_Movie()
-    {
-        $this->withoutExceptionHandling();
-
-        $response = $this->withoutMiddleware()->post(route('store'), [
-            'title' => 'Test',
-            'year' => '2020',
-            'director' => 'director',
-            'synopsis' => 'synopsis',
-            'category' => 1,
-            'trailer' => 'trailer'
-        ]);
-
-        $response->assertStatus(200);
-    }
 }
 
