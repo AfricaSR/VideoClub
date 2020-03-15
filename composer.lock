@@ -4,135 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1215adfa4099755c5e1a2bfe88ed3117",
+    "content-hash": "84d06de317458c405595725e02099c54",
     "packages": [
-        {
-            "name": "bnjns/laravel-notifications",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bnjns/laravel-notifications.git",
-                "reference": "0e7769c0b3b39a49d0fbee253b36491c3d00e8b3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bnjns/laravel-notifications/zipball/0e7769c0b3b39a49d0fbee253b36491c3d00e8b3",
-                "reference": "0e7769c0b3b39a49d0fbee253b36491c3d00e8b3",
-                "shasum": ""
-            },
-            "require": {
-                "graham-campbell/markdown": "^11.0",
-                "laravel/framework": "^6.0",
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">= 4.0 < 9.0",
-                "squizlabs/php_codesniffer": "^2.3||^3.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "bnjns\\LaravelNotifications\\NotificationServiceProvider"
-                    ],
-                    "aliases": {
-                        "Notify": "bnjns\\LaravelNotifications\\Facades\\Notify"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "bnjns\\LaravelNotifications\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Jones",
-                    "email": "ben@bnjns.uk",
-                    "homepage": "http://www.bnjns.uk",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A small package to provide an easy way to display flash notifications for Laravel 5.",
-            "homepage": "https://github.com/bnjns/laravel-notifications",
-            "keywords": [
-                "alerts",
-                "bnjns",
-                "bootstrap",
-                "flash",
-                "jquery",
-                "notifications"
-            ],
-            "time": "2019-09-09T19:37:17+00:00"
-        },
-        {
-            "name": "coderatio/laranotify",
-            "version": "v0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/coderatio/laranotify.git",
-                "reference": "1368d21a8f999b049f83558753927c1dfafb3b49"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/coderatio/laranotify/zipball/1368d21a8f999b049f83558753927c1dfafb3b49",
-                "reference": "1368d21a8f999b049f83558753927c1dfafb3b49",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": ">=4.0",
-                "php": ">=5.6.0"
-            },
-            "type": "laravel-package",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Coderatio\\Laranotify\\LaranotifyServiceProvider"
-                    ],
-                    "aliases": {
-                        "Notify": "Coderatio\\Laranotify\\Facades\\Notify",
-                        "Laranotify": "Coderatio\\Laranotify\\Facades\\Laranotify"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Coderatio\\Laranotify\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Josiah Ovye Yahaya",
-                    "email": "josiahoyahaya@gmail.com"
-                }
-            ],
-            "description": "The most advanced laravel package to dynamically display beautiful and elegant alert messages, blockables and notifications on screen. This is built with fluency in mind--meaning, you can chain as many methods as you want. Lots of functionalities are available.",
-            "keywords": [
-                "Bootstrap Notify",
-                "Code9ja",
-                "Coderatio",
-                "Laranotify",
-                "Laravel Framework",
-                "Larnotify",
-                "lara",
-                "laravel",
-                "laravel notification",
-                "notifier",
-                "notify"
-            ],
-            "time": "2018-03-02T11:03:45+00:00"
-        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
@@ -459,74 +332,6 @@
                 "trusted proxy"
             ],
             "time": "2019-12-20T13:11:11+00:00"
-        },
-        {
-            "name": "graham-campbell/markdown",
-            "version": "v11.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GrahamCampbell/Laravel-Markdown.git",
-                "reference": "80f545b417db2103122c7f094bfa5bb2444b28e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Markdown/zipball/80f545b417db2103122c7f094bfa5bb2444b28e1",
-                "reference": "80f545b417db2103122c7f094bfa5bb2444b28e1",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^5.5|^6.0",
-                "illuminate/support": "^5.5|^6.0",
-                "illuminate/view": "^5.5|^6.0",
-                "league/commonmark": "^1.0",
-                "php": "^7.1.3"
-            },
-            "require-dev": {
-                "graham-campbell/analyzer": "^2.1",
-                "graham-campbell/testbench": "^5.2",
-                "league/commonmark-extras": "^1.0",
-                "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^6.5|^7.0|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "11.1-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "GrahamCampbell\\Markdown\\MarkdownServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GrahamCampbell\\Markdown\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "graham@alt-three.com"
-                }
-            ],
-            "description": "Markdown Is A CommonMark Wrapper For Laravel 5",
-            "keywords": [
-                "Graham Campbell",
-                "GrahamCampbell",
-                "Laravel Markdown",
-                "Laravel-Markdown",
-                "common mark",
-                "commonmark",
-                "framework",
-                "laravel",
-                "markdown"
-            ],
-            "time": "2019-08-26T16:31:24+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -3647,6 +3452,74 @@
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
+            "name": "graham-campbell/markdown",
+            "version": "v11.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrahamCampbell/Laravel-Markdown.git",
+                "reference": "80f545b417db2103122c7f094bfa5bb2444b28e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Markdown/zipball/80f545b417db2103122c7f094bfa5bb2444b28e1",
+                "reference": "80f545b417db2103122c7f094bfa5bb2444b28e1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^5.5|^6.0",
+                "illuminate/support": "^5.5|^6.0",
+                "illuminate/view": "^5.5|^6.0",
+                "league/commonmark": "^1.0",
+                "php": "^7.1.3"
+            },
+            "require-dev": {
+                "graham-campbell/analyzer": "^2.1",
+                "graham-campbell/testbench": "^5.2",
+                "league/commonmark-extras": "^1.0",
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^6.5|^7.0|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "11.1-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "GrahamCampbell\\Markdown\\MarkdownServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GrahamCampbell\\Markdown\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com"
+                }
+            ],
+            "description": "Markdown Is A CommonMark Wrapper For Laravel 5",
+            "keywords": [
+                "Graham Campbell",
+                "GrahamCampbell",
+                "Laravel Markdown",
+                "Laravel-Markdown",
+                "common mark",
+                "commonmark",
+                "framework",
+                "laravel",
+                "markdown"
+            ],
+            "time": "2019-08-26T16:31:24+00:00"
+        },
+        {
             "name": "hamcrest/hamcrest-php",
             "version": "v2.0.0",
             "source": {
@@ -3693,6 +3566,74 @@
                 "test"
             ],
             "time": "2016-01-20T08:20:44+00:00"
+        },
+        {
+            "name": "laravel/dusk",
+            "version": "v5.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/dusk.git",
+                "reference": "7abf5a7152863f8597a43d640cce3adb6cd8ab3f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/7abf5a7152863f8597a43d640cce3adb6cd8ab3f",
+                "reference": "7abf5a7152863f8597a43d640cce3adb6cd8ab3f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-zip": "*",
+                "illuminate/console": "~5.7.0|~5.8.0|^6.0|^7.0",
+                "illuminate/support": "~5.7.0|~5.8.0|^6.0|^7.0",
+                "nesbot/carbon": "^1.20|^2.0",
+                "php": ">=7.1.0",
+                "php-webdriver/webdriver": "^1.8.1",
+                "symfony/console": "^4.0|^5.0",
+                "symfony/finder": "^4.0|^5.0",
+                "symfony/process": "^4.0|^5.0",
+                "vlucas/phpdotenv": "^2.2|^3.0|^4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^7.5|^8.0"
+            },
+            "suggest": {
+                "ext-pcntl": "Used to gracefully terminate Dusk when tests are running."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Dusk\\DuskServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Dusk\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Dusk provides simple end-to-end testing and browser automation.",
+            "keywords": [
+                "laravel",
+                "testing",
+                "webdriver"
+            ],
+            "time": "2020-02-18T19:13:12+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -3972,6 +3913,71 @@
             ],
             "description": "Library for handling version information and constraints",
             "time": "2018-07-08T19:19:57+00:00"
+        },
+        {
+            "name": "php-webdriver/webdriver",
+            "version": "1.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-webdriver/php-webdriver.git",
+                "reference": "3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab",
+                "reference": "3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-zip": "*",
+                "php": "^5.6 || ~7.0",
+                "symfony/polyfill-mbstring": "^1.12",
+                "symfony/process": "^2.8 || ^3.1 || ^4.0 || ^5.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "jakub-onderka/php-parallel-lint": "^1.0",
+                "php-coveralls/php-coveralls": "^2.0",
+                "php-mock/php-mock-phpunit": "^1.1",
+                "phpunit/phpunit": "^5.7",
+                "sebastian/environment": "^1.3.4 || ^2.0 || ^3.0",
+                "sminnee/phpunit-mock-objects": "^3.4",
+                "squizlabs/php_codesniffer": "^3.5",
+                "symfony/var-dumper": "^3.3 || ^4.0 || ^5.0"
+            },
+            "suggest": {
+                "ext-SimpleXML": "For Firefox profile creation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Facebook\\WebDriver\\": "lib/"
+                },
+                "files": [
+                    "lib/Exception/TimeoutException.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A PHP client for Selenium WebDriver. Previously facebook/webdriver.",
+            "homepage": "https://github.com/php-webdriver/php-webdriver",
+            "keywords": [
+                "Chromedriver",
+                "geckodriver",
+                "php",
+                "selenium",
+                "webdriver"
+            ],
+            "time": "2020-03-04T14:40:12+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -5296,9 +5302,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "bnjns/laravel-notifications": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

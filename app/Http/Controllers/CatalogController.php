@@ -8,7 +8,7 @@ use App\Movie;
 use App\Review;
 use App\Category;
 use App\Favourite;
-use Notify;
+//use Notify;
 
 class CatalogController extends Controller
 {
@@ -81,7 +81,7 @@ class CatalogController extends Controller
         $p->synopsis = $request->synopsis;
         $p->save();
 
-        Notify::success('Has creado una nueva película!');
+        // // Notifysuccess('Has creado una nueva película!');
 
         return redirect('/catalog');
 
@@ -110,7 +110,7 @@ class CatalogController extends Controller
         $p->synopsis = $request->synopsis;
         $p->save();
 
-        Notify::success('La película se ha editado correctamente!');
+        // // Notifysuccess('La película se ha editado correctamente!');
 
         $Pelicula = Movie::findOrFail($id);
 
@@ -135,7 +135,7 @@ class CatalogController extends Controller
         $p->rented = true;
         $p->save();
 
-        Notify::info('Has alquilado esta Película');
+        // // Notifyinfo('Has alquilado esta Película');
 
         return redirect('/catalog');
 
@@ -149,7 +149,7 @@ class CatalogController extends Controller
         $p->rented = false;
         $p->save();
 
-        Notify::success('Gracias por devolver tu película');
+        // // Notifysuccess('Gracias por devolver tu película');
 
         return redirect('/catalog');
 
@@ -162,7 +162,7 @@ class CatalogController extends Controller
         $p = $m -> findOrFail($id);
         $p->delete();
 
-        Notify::warning('Película borrada correctamente');
+        // // Notifywarning('Película borrada correctamente');
 
         return redirect('/catalog');
 
@@ -186,7 +186,7 @@ class CatalogController extends Controller
     
             $Reviews = Review::where('movie_id', $Pelicula->id)->get();
     
-            Notify::success('Gracias por darnos tu opinión!');
+            // // Notifysuccess('Gracias por darnos tu opinión!');
     
             $Fav = false;
     
@@ -202,7 +202,7 @@ class CatalogController extends Controller
 
             $Reviews = Review::where('movie_id', $Pelicula->id)->get();
     
-            Notify::warning('Todos los campos deben ser rellenados');
+            // // Notifywarning('Todos los campos deben ser rellenados');
     
             $Fav = false;
     

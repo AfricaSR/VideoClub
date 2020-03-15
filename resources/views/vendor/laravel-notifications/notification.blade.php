@@ -3,7 +3,7 @@
 @endif
 <div class="notification {{ $notification['class'] }}"
      data-type="notification"
-     data-close-class="{{ (Notify::getIconPrefix() . config('notifications.icons.close')) }}"
+     data-close-class="{{ ( Notify:getIconPrefix() . config('notifications.icons.close')) }}"
         {{ $notification['attributes'] }}>
     @if($notification['icon'])
         <span class="icon {{ $notification['icon'] }}"></span>

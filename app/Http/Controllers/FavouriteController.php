@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Movie;
 use App\Review;
 use App\Favourite;
-use Notify;
+// use Notify;
 use DB;
 
 class FavouriteController extends Controller
@@ -42,7 +42,7 @@ class FavouriteController extends Controller
         $f->movie_id = $id;
         $f->save();
 
-        Notify::success('Película agregada a favoritos!');
+        // // Notifysuccess('Película agregada a favoritos!');
 
         return redirect('/catalog/show/'.$id);
 
@@ -97,7 +97,7 @@ class FavouriteController extends Controller
 
         $d->delete();
 
-        Notify::warning('Has eliminado la película de favoritos');
+        // // Notifywarning('Has eliminado la película de favoritos');
 
         return redirect('/catalog/show/'.$id);
 

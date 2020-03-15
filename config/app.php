@@ -175,8 +175,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Coderatio\Laranotify\LaranotifyServiceProvider::class,
-
     ],
 
     /*
@@ -213,8 +211,6 @@ return [
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
-        'Notify' => Coderatio\Laranotify\Facades\Notify::class,
-        'Laranotify' => Coderatio\Laranotify\Facades\Laranotify::class,
         'Password' => Illuminate\Support\Facades\Password::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,
         'Redirect' => Illuminate\Support\Facades\Redirect::class,

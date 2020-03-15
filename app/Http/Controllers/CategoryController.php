@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Category;
 use Illuminate\Http\Request;
-use Notify;
+// use Notify;
 use App\Movie;
 class CategoryController extends Controller
 {
@@ -46,7 +46,7 @@ class CategoryController extends Controller
         $c->adult = $request->adult;
         $c->save();
 
-        Notify::success('Has creado una nueva Categoría!');
+        // // Notifysuccess('Has creado una nueva Categoría!');
 
         return redirect('/category');
         
@@ -96,7 +96,7 @@ class CategoryController extends Controller
         $c->adult = $request->adult;
         $c->save();
 
-        Notify::success('La categoría se ha editado correctamente!');
+        // // Notifysuccess('La categoría se ha editado correctamente!');
 
         $Category = Category::findOrFail($id);
 
@@ -117,7 +117,7 @@ class CategoryController extends Controller
         $c = $cat -> findOrFail($id);
         $c->delete();
 
-        Notify::warning('Categoría borrada correctamente');
+        // // Notifywarning('Categoría borrada correctamente');
 
         return redirect('/category');
     }
