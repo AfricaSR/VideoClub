@@ -146,7 +146,7 @@
                   <div class="form-group">
                     <textarea name="review" id="review" class="form-control" rows="3" placeholder="Da tu opinión" required></textarea>
                  </div>
-                 <div class="form-group text-center" style="display:inline">
+                 <div class="form-group text-center" id="Valorar" style="display:inline">
                     <input type="submit" class="btn btn-success" style="margin-bottom:25px;" value="Valorar"/>
                     
                  </div>

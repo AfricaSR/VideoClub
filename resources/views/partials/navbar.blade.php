@@ -46,7 +46,7 @@
                             <div class="input-group mr-3">
                                 <input type="text" class="form-control rounded-left" name="qry" id="qry"
                                     placeholder="Buscar película o autor"> <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-default rounded-right">
+                                    <button type="submit" name="search" id="search" class="btn btn-default rounded-right">
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </span>
